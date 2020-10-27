@@ -49,7 +49,7 @@ public class Membresia implements Serializable {
     @JoinColumn(name = "servicio_id")
     private Servicio servicioId;
     
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "membresiaId", fetch = FetchType.LAZY)
-//    private List<Membresia> membresia = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "membresiaId", fetch = FetchType.LAZY)
+    private List<MembresiaCliente> membresiaCliente = new ArrayList<>();
 
 }

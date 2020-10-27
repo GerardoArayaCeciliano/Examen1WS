@@ -57,6 +57,6 @@ public class Cliente implements Serializable {
     private Date fechaNacimiento;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteId", fetch = FetchType.LAZY)
-    private List<Cliente> clientes = new ArrayList<>();
+    private List<MembresiaCliente> membrebesiaCliente = new ArrayList<>();
 
 }
