@@ -41,6 +41,6 @@ public class Servicio implements Serializable {
     private String nombre;
     @Column(name = "descripcion", length = 500)
     private String descripcion;
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "membresiaClienteId", fetch = FetchType.LAZY)
-    private List<Servicio> cobroPendiente = new ArrayList<>();
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicioId", fetch = FetchType.LAZY)
+    private List<Membresia> membresia = new ArrayList<>();
 }
