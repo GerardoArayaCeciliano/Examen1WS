@@ -7,9 +7,11 @@ package org.una.Examen1.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -26,5 +28,6 @@ public class MembresiaDTO {
     private Integer monto;
     private String descripcion;
     private ServicioDTO servicioId;
+     @Setter(AccessLevel.NONE)
     private List<MembresiaClienteDTO> membresiaCliente = new ArrayList<>();
 }

@@ -7,9 +7,11 @@ package org.una.Examen1.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -21,8 +23,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ServicioDTO {
+
     private Long id;
     private String nombre;
     private String descripcion;
+    @Setter(AccessLevel.NONE)
     private List<MembresiaDTO> membresia = new ArrayList<>();
 }

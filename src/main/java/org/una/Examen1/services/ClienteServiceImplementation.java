@@ -71,4 +71,9 @@ public class ClienteServiceImplementation implements IClienteService {
         return MapperUtils.DtoFromEntity(cliente, ClienteDTO.class);
     }
 
+    @Override
+    public Optional<List<ClienteDTO>> buscarCliente(String nombre, String apellido1, String apellido2, String cedula) {
+        return findList(clienteRepository.busquedaP(nombre, apellido1, apellido2, cedula));
+    }
+
 }

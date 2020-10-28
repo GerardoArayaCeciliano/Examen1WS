@@ -20,5 +20,7 @@ public interface IClienteService {
     public Optional<ClienteDTO> findById(Long id);
 
     public ClienteDTO create(ClienteDTO clienteDTO);
+    
+    public Optional<List<ClienteDTO>>buscarCliente(String nombre,String apellido1,String apellido2,String cedula);
 
 }

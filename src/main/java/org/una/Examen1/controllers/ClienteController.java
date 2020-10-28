@@ -5,6 +5,8 @@
  */
 package org.una.Examen1.controllers;
 
+import java.util.List;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,13 +35,15 @@ public class ClienteController {
     private IClienteService clienteService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable(value = "id") Long id) {
+    @ResponseBody
+    public ResponseEntity<?> getById(@PathVariable(value = "id") long id) {
         try {
             return new ResponseEntity(clienteService.findById(id), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping("buscarTodo")
     @ResponseBody
     public ResponseEntity<?> findAll() {
@@ -49,11 +53,45 @@ public class ClienteController {
             return new ResponseEntity(ex, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-      @ResponseStatus(HttpStatus.OK)
+
+    @GetMapping("/busquedaCompletaCliente/{nombre}/{apellido1}/{apellido2}/{cedula}")
+    @ResponseBody
+    public ResponseEntity<?> busquedaCompletaCliente(@PathVariable(value = "nombre") String nombre,
+            @PathVariable(value = "apellido1") String apellido1,@PathVariable(value = "apellido2") String apellido2, @PathVariable(value = "cedula") String cedula) {
+        String pName = "%";
+        String pApellido1 = "%";
+        String pApellido2 = "%";
+        String pCedula = "%";
+        try {
+
+            if (!nombre.equals("none")) {
+                pName = nombre;
+            }
+            if (!apellido1.equals("none")) {
+                pApellido1 = apellido1;
+            }
+             if (!apellido1.equals("none")) {
+                pApellido1 = apellido1;
+            }
+            if (!cedula.equals("none")) {
+                pCedula = cedula;
+            }
+            Optional<List<ClienteDTO>> result =clienteService.buscarCliente(pName,pApellido1, pApellido2,pCedula);
+
+            if (!result.isEmpty()) {
+                return new ResponseEntity<>(result, HttpStatus.OK);
+            }
+            return new ResponseEntity<>("Sin resultados", HttpStatus.NO_CONTENT);
+        } catch (Exception ex) {
+            return new ResponseEntity<>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/crear")
     @ResponseBody
-    public ResponseEntity<?> create(@Valid @RequestBody ClienteDTO clienteDTO,BindingResult bindingResult) {
-     
+    public ResponseEntity<?> create(@Valid @RequestBody ClienteDTO clienteDTO, BindingResult bindingResult) {
+
         if (!bindingResult.hasErrors()) {
             try {
                 return new ResponseEntity(clienteService.create(clienteDTO), HttpStatus.CREATED);
