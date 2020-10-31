@@ -5,11 +5,12 @@
  */
 package org.una.Examen1.dto;
 
-import java.time.Year;
 import java.util.Date;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -21,12 +22,19 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class CobroPendienteDTO {
+
     private Long id;
-    private Year anno;
+    private String anno;
     private Date fechaVencimiento;
     private Integer monto;
     private boolean estado;
     private String periodo;
-    private MembresiaDTO membresiaClienteId;
-    
+    @Setter(AccessLevel.NONE)
+//    private MembresiaDTO membresiaClienteId;
+    private MembresiaClienteDTO membresiaClienteId;
+    private Integer cantidad;
+     public void setMembre(MembresiaClienteDTO membrecias){
+      membresiaClienteId=membrecias;
+     }
+
 }

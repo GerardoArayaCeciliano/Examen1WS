@@ -23,11 +23,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class MembresiaClienteDTO {
+
     private Long id;
-     @Setter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private ClienteDTO clienteId;
-    
+    private boolean estado;
     private MembresiaDTO membresiaId;
-     @Setter(AccessLevel.NONE)
     private List<CobroPendienteDTO> cobroPendiente = new ArrayList<>();
+
+    public void clieteAux(ClienteDTO cli) {
+        clienteId = cli;
+    }
+;
+
 }

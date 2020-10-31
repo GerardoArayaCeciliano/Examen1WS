@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.una.Examen1.dto.CobroPendienteDTO;
 import org.una.Examen1.entities.CobroPendiente;
 import org.una.Examen1.repositories.ICobroPendienteRepository;
@@ -60,6 +61,8 @@ public class CobroPendienteServiceImplemetation implements ICobroPendienteServic
     }
 
     @Override
+    @Transactional
+  //  @Transactional(readOnly = true)
     public CobroPendienteDTO create(CobroPendienteDTO cobroPendienteDTO) {
         CobroPendiente cobroPendiente = MapperUtils.EntityFromDto(cobroPendienteDTO, CobroPendiente.class);
         cobroPendiente = cobroPendienteRepository.save(cobroPendiente);

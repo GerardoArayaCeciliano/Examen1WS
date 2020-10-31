@@ -8,11 +8,9 @@ package org.una.Examen1.dto;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -31,5 +29,6 @@ public class ClienteDTO {
     private String cedula;
     private Date fechaNacimiento;
    
+   // @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
     private List<MembresiaClienteDTO> membrebesiaCliente = new ArrayList<>();
 }

@@ -7,7 +7,6 @@ package org.una.Examen1.entities;
 //
 
 import java.io.Serializable;
-import java.time.Year;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,11 +18,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -41,12 +38,10 @@ public class CobroPendiente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "anno")
-//    @Setter(AccessLevel.NONE)
-//    @Temporal(TemporalType.DATE)
-    private Year anno;
+    @Column(name = "anno",length = 4)
+
+    private String anno;
     @Column(name = "fecha_vencimiento")
-    @Setter(AccessLevel.NONE)
     @Temporal(TemporalType.DATE)
     private Date fechaVencimiento;
     @Column(name = "monto")
@@ -57,7 +52,7 @@ public class CobroPendiente implements Serializable {
     private String periodo;
     @ManyToOne
     @JoinColumn(name = "membrecia_cliente_id")
-    private Membresia membresiaClienteId;
+    private MembresiaCliente membresiaClienteId;
     
 
 }
