@@ -26,7 +26,9 @@ public class ClienteDTO {
     private String nombre;
     private String apellido1;
     private String apellido2;
-    private String correo;
+    private String cedula;
     private Date fechaNacimiento;
+   
+   // @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
     private List<MembresiaClienteDTO> membrebesiaCliente = new ArrayList<>();
 }

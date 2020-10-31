@@ -49,7 +49,7 @@ public class Cliente implements Serializable {
     @Column(name = "segundo_apellido", length = 50)
     private String apellido2;
     @Column(name = "cedula", length = 50)
-    private String correo;
+    private String cedula;
 
     @Column(name = "fecha_nacimiento")
     @Setter(AccessLevel.NONE)

@@ -14,9 +14,14 @@ import org.una.Examen1.dto.MembresiaClienteDTO;
  * @author LordLalo
  */
 public interface IMembresiaClienteService {
-      public Optional<List<MembresiaClienteDTO>> findAll();
+
+    public Optional<List<MembresiaClienteDTO>> findAll();
 
     public Optional<MembresiaClienteDTO> findById(Long id);
 
+    public Optional<List<MembresiaClienteDTO>> findByEstado(Boolean estado);
+
     public MembresiaClienteDTO create(MembresiaClienteDTO membresiaClienteDTO);
+
+    public MembresiaClienteDTO upDate(MembresiaClienteDTO membresiaClienteDTO);
 }

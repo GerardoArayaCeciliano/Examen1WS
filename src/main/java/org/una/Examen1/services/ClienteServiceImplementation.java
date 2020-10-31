@@ -20,6 +20,7 @@ import org.una.Examen1.utils.MapperUtils;
  * @author LordLalo
  */
 @Service
+
 public class ClienteServiceImplementation implements IClienteService {
 
     @Autowired
@@ -69,6 +70,11 @@ public class ClienteServiceImplementation implements IClienteService {
         Cliente cliente = MapperUtils.EntityFromDto(clienteDTO, Cliente.class);
         cliente = clienteRepository.save(cliente);
         return MapperUtils.DtoFromEntity(cliente, ClienteDTO.class);
+    }
+
+    @Override
+    public Optional<List<ClienteDTO>> buscarCliente(String nombre, String apellido1, String apellido2, String cedula) {
+        return findList(clienteRepository.busquedaP(nombre, apellido1, apellido2, cedula));
     }
 
 }
